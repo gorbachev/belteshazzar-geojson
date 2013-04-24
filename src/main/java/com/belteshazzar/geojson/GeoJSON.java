@@ -51,4 +51,6 @@ public abstract class GeoJSON implements Validation
 		if ( !validator.isValidBB(bbox) ) return false;
 		return true;
 	}
+
+	public abstract String getType();
 }

@@ -14,6 +14,7 @@ public class MultiPointGeoJSON extends GeometryGeoJSON
 {
 	public List<List<Double>> coordinates;
 	
+	@Override
 	public boolean isValid( PositionValidator validator )
 	{
 		if (coordinates==null) return false;
@@ -24,5 +25,10 @@ public class MultiPointGeoJSON extends GeometryGeoJSON
 			if ( !validator.isValid(position) ) return false;
 		}
 		return super.isValid(validator);
+	}
+
+	@Override
+	public String getType() {
+		return "MultiPoint";
 	}
 }

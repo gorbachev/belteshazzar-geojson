@@ -15,6 +15,7 @@ public class FeatureCollectionGeoJSON extends GeoJSON
 {
 	public List<FeatureGeoJSON> features;
 
+	@Override
 	public boolean isValid( PositionValidator validator )
 	{
 		if ( features==null ) return false;
@@ -26,5 +27,10 @@ public class FeatureCollectionGeoJSON extends GeoJSON
 		}
 
 		return super.isValid(validator);
+	}
+
+	@Override
+	public String getType() {
+		return "FeatureCollection";
 	}
 }

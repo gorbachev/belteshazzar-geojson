@@ -49,4 +49,9 @@ public class PolygonGeoJSON extends GeometryGeoJSON
 
 		return super.isValid(validator);
 	}
+
+	@Override
+	public String getType() {
+		return "Polygon";
+	}
 }

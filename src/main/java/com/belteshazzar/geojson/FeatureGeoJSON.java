@@ -34,4 +34,9 @@ public class FeatureGeoJSON extends GeoJSON
 
 		return super.isValid(validator);
 	}
+
+	@Override
+	public String getType() {
+		return "Feature";
+	}
 }

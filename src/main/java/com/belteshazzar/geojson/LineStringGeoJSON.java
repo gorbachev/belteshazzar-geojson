@@ -12,6 +12,7 @@ public class LineStringGeoJSON extends GeometryGeoJSON
 	 * For type "LineString", the "coordinates" member must
 	 * be an array of two or more positions.
 	 */
+	@Override
 	public boolean isValid( PositionValidator validator )
 	{
 		if (coordinates==null) return false;
@@ -22,5 +23,10 @@ public class LineStringGeoJSON extends GeometryGeoJSON
 			if ( !validator.isValid(position) ) return false;
 		}
 		return true;
+	}
+
+	@Override
+	public String getType() {
+		return "LineString";
 	}
 }

@@ -36,4 +36,9 @@ public class MultiLineStringGeoJSON extends GeometryGeoJSON
 
 		return super.isValid(validator);
 	}
+
+	@Override
+	public String getType() {
+		return "MultiLineString";
+	}
 }

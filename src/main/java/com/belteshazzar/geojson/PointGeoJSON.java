@@ -18,4 +18,9 @@ public class PointGeoJSON extends GeometryGeoJSON
 	{
 		return validator.isValid(coordinates) && super.isValid(validator);
 	}
+
+	@Override
+	public String getType() {
+		return "Point";
+	}
 }

@@ -24,4 +24,9 @@ public class GeometryCollectionGeoJSON extends GeoJSON
 		}
 		return super.isValid(validator);
 	}
+
+	@Override
+	public String getType() {
+		return "GeometryCollection";
+	}
 }

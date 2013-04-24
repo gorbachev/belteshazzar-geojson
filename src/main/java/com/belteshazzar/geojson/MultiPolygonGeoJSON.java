@@ -14,6 +14,7 @@ public class MultiPolygonGeoJSON extends GeometryGeoJSON
 {
 	public List<List<List<List<Double>>>> coordinates;
 
+	@Override
 	public boolean isValid( PositionValidator validator )
 	{
 		if (coordinates==null) return false;
@@ -42,5 +43,10 @@ public class MultiPolygonGeoJSON extends GeometryGeoJSON
 		}
 		
 		return super.isValid(validator);
+	}
+
+	@Override
+	public String getType() {
+		return "MultiPolygon";
 	}
 }
