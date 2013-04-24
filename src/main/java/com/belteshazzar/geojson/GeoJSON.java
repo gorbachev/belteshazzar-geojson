@@ -26,7 +26,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 	@JsonSubTypes.Type(value=FeatureGeoJSON.class,				name="Feature"),
 	@JsonSubTypes.Type(value=FeatureCollectionGeoJSON.class,	name="FeatureCollection")
 })
-public abstract class GeoJSON implements Validation
+public abstract class GeoJSON implements Validation, LinearRingCloser
 {
 	public CRSGeoJSON crs;
 	public List<Double> bbox;
@@ -50,6 +50,11 @@ public abstract class GeoJSON implements Validation
 		if ( crs!=null && !crs.isValid(validator) ) return false;
 		if ( !validator.isValidBB(bbox) ) return false;
 		return true;
+	}
+
+	@Override
+	public void closeLinearRing() {
+		// default is to do nothing
 	}
 
 	public abstract String getType();

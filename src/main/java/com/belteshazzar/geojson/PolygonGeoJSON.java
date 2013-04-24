@@ -1,6 +1,9 @@
 package com.belteshazzar.geojson;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import com.belteshazzar.geojson.validation.LonLatValidator;
 
 /**
  * A Bean representation of a GeoJSON Polygon geometry object.
@@ -53,5 +56,22 @@ public class PolygonGeoJSON extends GeometryGeoJSON
 	@Override
 	public String getType() {
 		return "Polygon";
+	}
+
+	@Override
+	public void closeLinearRing() {
+		if (coordinates==null) return;
+		
+		for ( List<List<Double>> linearRing : coordinates )
+		{
+			if (linearRing==null) break;
+
+			List<Double> first = linearRing.get(0);
+			List<Double> last = linearRing.get(linearRing.size()-1);
+			
+			if ( !new LonLatValidator().isEquivalent(first,last) ) {
+				linearRing.add(new ArrayList<Double>(first));
+			}
+		}
 	}
 }
