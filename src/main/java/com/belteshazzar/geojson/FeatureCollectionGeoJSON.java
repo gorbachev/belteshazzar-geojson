@@ -1,6 +1,9 @@
 package com.belteshazzar.geojson;
 
 import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * A Bean representation of a GeoJSON Feature Collection.
@@ -14,6 +17,7 @@ import java.util.List;
 public class FeatureCollectionGeoJSON extends GeoJSON
 {
 	public List<FeatureGeoJSON> features;
+	public Map<String,JsonNode> properties;
 
 	@Override
 	public boolean isValid( PositionValidator validator )
